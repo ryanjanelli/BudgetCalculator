@@ -34,11 +34,11 @@
 import Navbar from './Navbar.svelte'
 import Title from './Title.svelte'
 </script>
-<!-- JAVASCRIPT/LOGIC -->
 
 <!-- <style></style> -->
 <!-- CSS/STYLING -->
 
 <!-- HTML -->
 <Navbar />
-<Title />
+<Title title="add expense"/>
+<Title title="expense list"/>
