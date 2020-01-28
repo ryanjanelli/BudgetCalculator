@@ -32,6 +32,7 @@
 
 <script>
 import Navbar from './Navbar.svelte'
+import Title from './Title.svelte'
 </script>
 <!-- JAVASCRIPT/LOGIC -->
 
@@ -40,3 +41,4 @@ import Navbar from './Navbar.svelte'
 
 <!-- HTML -->
 <Navbar />
+<Title />
