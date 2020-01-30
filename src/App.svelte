@@ -3,12 +3,12 @@
   import Navbar from "./Navbar.svelte";
   import ExpensesList from "./ExpensesList.svelte";
   // data
-  import expensesData from "./expenses";
+  import expensesData from "./expenses.js";
   // variables
   let expenses = [...expensesData];
 </script>
 
 <Navbar />
 <main class="content">
-  <ExpensesList {expenses}/>
+  <ExpensesList {expenses} />
 </main>
