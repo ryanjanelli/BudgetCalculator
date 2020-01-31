@@ -1,6 +1,6 @@
 <script>
   import { getContext } from "svelte";
-// components
+  // components
   export let id;
   export let name = "";
   export let amount = 0;
