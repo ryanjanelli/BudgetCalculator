@@ -11,10 +11,17 @@
   function removeExpense(id) {
     expenses = expenses.filter(item => item.id !== id);
   }
+  function clearExpenses() {
+    expenses = [];
+  }
+  // context
   setContext("remove", removeExpense);
 </script>
 
 <Navbar />
 <main class="content">
   <ExpensesList {expenses} />
+  <button type="button" class="btn btn-primary btn-block" on:click={clearExpenses}>
+  clear expenses
+  </button>
 </main>

@@ -1,13 +1,16 @@
 <script>
-import {getContext} from 'svelte';
+  import { getContext } from "svelte";
+// components
   export let id;
   export let name = "";
   export let amount = 0;
   let displayAmount = false;
+  // functions
   function toggleAmount() {
     displayAmount = !displayAmount;
   }
-  const removeExpense = getContext('remove');
+  // context
+  const removeExpense = getContext("remove");
 </script>
 
 <article class="single-expense">
