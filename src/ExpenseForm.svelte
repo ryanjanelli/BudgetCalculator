@@ -3,6 +3,7 @@
   let name = '';
   let amount = null;
 //   $: console.log({name, amount})
+$: isEmpty = !name || !amount;
 </script>
 
 <section class="form">
@@ -16,8 +17,14 @@
       <label for="amount">amount</label>
       <input type="number" id="amount" bind:value={amount} />
     </div>
+    {#if isEmpty}
     <p class="form-empty">please fill out all form fields</p>
-    <button type="submit" class="btn btn-block">add expense</button>
+    {/if}
+    <button 
+    type="submit" 
+    class="btn btn-block" 
+    class:disabled={isEmpty}
+    disabled={isEmpty}>add expense</button>
     <button type="button" class="close-btn">
       <i class="fas fa-times" />
       close
