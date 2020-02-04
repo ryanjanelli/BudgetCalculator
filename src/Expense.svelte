@@ -12,6 +12,7 @@
   // context
   const removeExpense = getContext("remove");
   const setModifiedExpense = getContext("modify");
+  const showForm = getContext("showForm");
 </script>
 
 <article class="single-expense">
