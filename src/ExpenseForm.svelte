@@ -1,6 +1,6 @@
 <script>
   import Title from "./Title.svelte";
-  export let name = "";
+  export let name = '';
   export let amount = null;
   export let addExpense;
   export let isEditing;
@@ -13,7 +13,7 @@
     } else {
       addExpense({ name, amount });
     }
-    name = "";
+    name = '';
     amount = null;
   }
 </script>

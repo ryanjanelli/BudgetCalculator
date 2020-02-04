@@ -12,9 +12,9 @@
   // set editing variables
   let setName = "";
   let setAmount = null;
-  let setID = null;
+  let setId = null;
   // reactive
-  $: isEditing = setID ? true : false;
+  $: isEditing = setId ? true : false;
   $: total = expenses.reduce((accumulator, current) => {
     return (accumulator += current.amount);
   }, 0);
@@ -31,12 +31,17 @@
   }
   function setModifiedExpense(id) {
     let expense = expenses.find(item => item.id === id);
-    setID = expense.id;
+    setId = expense.id;
     setName = expense.name;
     setAmount = expense.amount;
   }
   function editExpense({ name, amount }) {
-    console.log({ name, amount });
+    expenses = expenses.map(item => {
+      return item.id === setId ? { ...item, name, amount } : { ...item };
+    });
+    setId = null;
+    setName = "";
+    setAmount = null;
   }
   // context
   setContext("remove", removeExpense);
@@ -47,8 +52,11 @@
 <Navbar />
 <main class="content">
   <ExpenseForm
-    name={setName} amount={setAmount}
-    {addExpense} {isEditing} {editExpense} />
+    name={setName}
+    amount={setAmount}
+    {addExpense}
+    {isEditing}
+    {editExpense} />
   <Totals title="total expenses" {total} />
   <ExpensesList {expenses} />
 </main>
