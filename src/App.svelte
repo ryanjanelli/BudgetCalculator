@@ -5,6 +5,7 @@
   import ExpensesList from "./ExpensesList.svelte";
   import Totals from "./Totals.svelte";
   import ExpenseForm from "./ExpenseForm.svelte";
+  import Modal from "./Modal.svelte";
   // data
   // import expensesData from "./expenses.js";
   // variables
@@ -88,3 +89,7 @@
   <Totals title="total expenses" {total} />
   <ExpensesList {expenses} />
 </main>
+<Modal>
+  <h1 slot="header">hello world</h1>
+  <h2 slot="footer">footer</h2>
+</Modal>
