@@ -69,24 +69,24 @@
       ? JSON.parse(localStorage.getItem("expenses"))
       : [];
   });
-  afterUpdate(()=> {
+  afterUpdate(() => {
     console.log("after update");
     setLocalStorage();
-  })
+  });
 </script>
 
 <Navbar {showForm} />
 <main class="content">
   {#if isFormOpen}
-  <Modal>
-    <ExpenseForm
-      name={setName}
-      amount={setAmount}
-      {addExpense}
-      {isEditing}
-      {editExpense}
-      {hideForm} />
-      </Modal>
+    <Modal>
+      <ExpenseForm
+        name={setName}
+        amount={setAmount}
+        {addExpense}
+        {isEditing}
+        {editExpense}
+        {hideForm} />
+    </Modal>
   {/if}
   <Totals title="total expenses" {total} />
   <ExpensesList {expenses} />
