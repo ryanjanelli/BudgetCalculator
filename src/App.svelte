@@ -1,14 +1,14 @@
 <script>
-  import { setContext } from "svelte";
+  import { setContext, onMount } from "svelte";
   // components
   import Navbar from "./Navbar.svelte";
   import ExpensesList from "./ExpensesList.svelte";
   import Totals from "./Totals.svelte";
   import ExpenseForm from "./ExpenseForm.svelte";
   // data
-  import expensesData from "./expenses.js";
+  // import expensesData from "./expenses.js";
   // variables
-  let expenses = [...expensesData];
+  let expenses = [];
   // set editing variables
   let setName = "";
   let setAmount = null;
@@ -27,18 +27,21 @@
   function hideForm() {
     isFormOpen = false;
     setId = null;
-    setName = '';
+    setName = "";
     setAmount = null;
   }
   function removeExpense(id) {
     expenses = expenses.filter(item => item.id !== id);
+    setLocalStorage();
   }
   function clearExpenses() {
     expenses = [];
+    setLocalStorage();
   }
   function addExpense({ name, amount }) {
     let expense = { id: Math.random() * Date.now(), name, amount };
     expenses = [expense, ...expenses];
+    setLocalStorage();
   }
   function setModifiedExpense(id) {
     let expense = expenses.find(item => item.id === id);
@@ -54,12 +57,22 @@
     setId = null;
     setName = "";
     setAmount = null;
+    setLocalStorage();
   }
   // context
   setContext("remove", removeExpense);
   setContext("clearExpenses", clearExpenses);
   setContext("modify", setModifiedExpense);
-  </script>
+  // local storage
+  function setLocalStorage() {
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+  }
+  onMount(() => {
+    expenses = localStorage.getItem("expenses")
+      ? JSON.parse(localStorage.getItem("expenses"))
+      : [];
+  });
+</script>
 
 <Navbar {showForm} />
 <main class="content">

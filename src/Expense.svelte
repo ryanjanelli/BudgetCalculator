@@ -2,7 +2,7 @@
   import { getContext } from "svelte";
   // components
   export let id;
-  export let name = '';
+  export let name = "";
   export let amount = 0;
   let displayAmount = false;
   // functions
@@ -29,7 +29,9 @@
     {/if}
   </div>
   <div class="expense-buttons">
-    <button class="expense-btn edit-btn" on:click={() => setModifiedExpense(id)} >
+    <button
+      class="expense-btn edit-btn"
+      on:click={() => setModifiedExpense(id)}>
       <i class="fas fa-pen" />
     </button>
     <button class="expense-btn delete-btn" on:click={() => removeExpense(id)}>
