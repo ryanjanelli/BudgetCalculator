@@ -1,6 +1,7 @@
 <script>
+  // Demonstrating how to access HTTP requests
   // import Github from "./Github.svelte"
-  import GithubAwait from "./GithubAwait.svelte"
+  // import GithubAwait from "./GithubAwait.svelte"
   import { setContext, onMount, afterUpdate } from "svelte";
   // components
   import Navbar from "./Navbar.svelte";
@@ -79,8 +80,9 @@
 
 <Navbar {showForm} />
 <main class="content">
-<GithubAwait />
-  <!-- {#if isFormOpen}
+  <!-- Demonstrating how to access HTTP requests -->
+  <!-- <GithubAwait /> -->
+  {#if isFormOpen}
     <Modal>
       <ExpenseForm
         name={setName}
@@ -92,5 +94,5 @@
     </Modal>
   {/if}
   <Totals title="total expenses" {total} />
-  <ExpensesList {expenses} /> -->
+  <ExpensesList {expenses} />
 </main>
