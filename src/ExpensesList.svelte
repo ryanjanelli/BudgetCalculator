@@ -1,6 +1,7 @@
 <script>
   import { getContext } from "svelte";
   import { fly } from "svelte/transition";
+  import { flip } from "svelte/animate";
   // components
   import SectionTitle from "./Title.svelte";
   import Expense from "./Expense.svelte";
@@ -18,17 +19,17 @@
 <section>
   <SectionTitle title="expense list" />
   <ul>
-    {#each expenses as expense, index}
-    <div transition:fly={{x:200, delay:index*700}}>
-      <Expense {...expense} />
-    </div>
+    {#each expenses as expense, index (expense.id)}
+      <div in:fly={{ x: 200, delay: (index + 1) * 400 }} out:fly={{ x: -200}} animate:flip >
+        <Expense {...expense} />
+      </div>
     {:else}
       <h2>no expenses to list</h2>
     {/each}
     <button
       type="button"
       class="btn btn-primary btn-block"
-      on:click={clearExpenses}>
+      on:click={clearExpenses} >
       clear expenses
     </button>
   </ul>
